@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="jedisConnFactory"
+          class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+        <property name="usePool" value="true"/>
+        <property name="hostName" value="${redis.ip}"/>
+        <!--<property name=""-->
+        <property name="port" value="${redis.port}"/>
+        <property name="poolConfig" ref="jedisPoolConfig"/>
+
+    </bean>
+    <bean id="jedisPoolConfig"
+          class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="${redis.pool.maxTotal}"/>
+        <property name="minIdle" value="${redis.pool.minIdle}"/>
+        <property name="maxIdle" value="${redis.pool.maxIdle}"/>
+        <property name="maxWaitMillis" value="${redis.pool.maxWait}"/>
+        <property name="testWhileIdle" value="${redis.pool.testWhileIdle}"/>
+        <property name="testOnBorrow" value="${redis.pool.testOnBorrow}"/>
+        <property name="testOnReturn" value="${redis.pool.testOnReturn}"/>
+    </bean>
+    <!-- redis template definition -->
+    <bean id="redisTemplate"
+          class="org.springframework.data.redis.core.RedisTemplate">
+        <property name="connectionFactory" ref="jedisConnFactory"/>
+        <!--<property name="valueSerializer" ref="valueSerializer"/>-->
+        <!--<property name=""-->
+    </bean>
+    <bean id="stringRedisTemplate"
+          class="org.springframework.data.redis.core.StringRedisTemplate">
+        <property name="connectionFactory" ref="jedisConnFactory"/>
+
+
+    </bean>
+</beans>

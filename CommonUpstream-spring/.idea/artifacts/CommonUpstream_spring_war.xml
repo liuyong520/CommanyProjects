@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="CommonUpstream-spring:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="CommonUpstreamRecharge.war">
+      <element id="artifact" artifact-name="CommonUpstream-spring:war exploded" />
+    </root>
+  </artifact>
+</component>

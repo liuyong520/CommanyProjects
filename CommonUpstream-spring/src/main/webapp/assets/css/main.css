@@ -1,0 +1,70 @@
+body{border: 0px}
+*{
+    margin: 0;
+    padding: 0;
+}
+div#container{width:100%;    background-color: #FFF8DC;}
+div#header {background-color:#99bbbb;}
+div#menu { width:10%; float:left;    padding: 2%;}
+div#content { width:86%; float:left;    background-color: #EEEEEE;padding: 2% 0;    height: auto;}
+div#footer {background-color:#99bbbb; clear:both; text-align:center; }
+#container:after{
+    display: block;
+    height: 0;
+    content: '';
+    visibility: hidden;
+    clear: both;
+}
+h1 {margin-bottom:0;}
+h2 {margin-bottom:0; font-size:14px;}
+ul {margin:0; }
+li {list-style:none;padding: 3px;text-indent:5% }
+#list tr td{
+    padding: 3px;
+    word-break: break-all;
+}
+#list1 tr td{
+    padding: 3px;
+    word-break: break-all;
+}
+#list{
+    height: 85%;
+
+}
+#update{
+    height: 89%;
+}
+#success{
+    margin-top: 2%;
+    height: 89%;
+}
+.table1{
+    font-size: 14px;
+    color: #ff9999;
+}
+.filset1{
+    width:80%;
+    align:center;
+}
+.h100{
+    height: 100%;
+}
+.textarea{
+    height: 85px;
+    width: 100%;
+}
+ul,li{padding:0; margin:0; list-style-type:none;}
+a{color:#34538b;}.rel{position:relative;}
+.zxx_test{padding:30px; font-family:'宋体'; font-size:84%;}
+.zxx_v_menu{width:120px; position:relative;}
+.click_area{padding:1px; border:1px solid #dddddd; background:#f9f9f9;}
+.click_area .v_menu{display:block; padding-left:5px; line-height:6px; border-top:6px solid #f8f8f8; background:#f7f7f7; border-bottom:5px solid #f5f5f5; font-size:12px; text-decoration:none; zoom:1;}
+.click_area .v_menu:hover{color:#34538b; text-decoration:none; border-top-color:#f5f5f5; background-color:#f4f4f4; border-bottom-color:#f2f2f2;}
+.point_out{width:14px; border:1px solid; border-color:#eeeeee #dddddd #d9d9d9 #eeeeee; background:#f8f8f8; padding:1px; float:right; margin-right:5px; position:relative; top:-16px; color:#34538b;}
+.point_in{display:block; line-height:3px; border-top:5px solid #f5f5f5; background:#f4f4f4; border-bottom:3px solid #f2f2f2;}
+.v_menu_list{position:absolute; width:98.5%; border:1px solid #dddddd; background:white; left:0px; top:21px; font-size:12px; display:none;}
+.v_menu_list li a{display:block; padding:5px 0 5px 5px; text-decoration:none; zoom:1;}
+.v_menu_list li a:hover{color:#333333; text-decoration:none; font-weight:bold;}
+.v_menu_list li.alt a{background-color:#f6f6f6;}
+
+

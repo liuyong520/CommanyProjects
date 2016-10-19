@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='GBK'?>
+<server-conf>
+	<server-name>���꿨-�봴���γ�ֵ�ӿڷ���</server-name>
+
+	<app-name>HongChuangRechargeSrv</app-name>
+	<user>HongChuangSrvUser</user>
+	<pwd>HongChuangSrvPwd</pwd>
+	<!-- <enc-pwd>6nGyDEHhMf/X9BDEXBT7aA==</enc-pwd> -->
+
+	<host>10.1.100.250</host>
+	<port>6004</port>
+	<link-time>3000</link-time>
+	<selector-timeout>1000</selector-timeout>
+	<pulse-time>600000</pulse-time>
+
+	<!-- �����ӿ�������apps�����з�����ã������ӿ���ʡ�Դ��� -->
+	<apps>
+		<!-- name����cmdΪ*�����ƥ�����⣬ע���Ⱥ�˳�� -->
+		<app name="*" cmd="*" class="com.nnk.upstream.handler.BaseHandler" method="handler" />
+	</apps>
+</server-conf>

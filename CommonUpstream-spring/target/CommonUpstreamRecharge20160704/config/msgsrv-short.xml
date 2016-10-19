@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<server-conf>
+	<server-name>年年卡-弘创上游充值接口服务</server-name>
+
+	<app-name>Test</app-name>
+	<user>TestUser</user>
+	<pwd>TestPwd</pwd>
+	<!-- <enc-pwd>6nGyDEHhMf/X9BDEXBT7aA==</enc-pwd> -->
+
+	<host>10.1.100.250</host>
+	<port>6004</port>
+	<link-time>3000</link-time>
+	<selector-timeout>1000</selector-timeout>
+	<pulse-time>600000</pulse-time>
+</server-conf>

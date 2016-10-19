@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jms="http://www.springframework.org/schema/jms" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+     http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context-3.0.xsd
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms-3.0.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+
+    <!--配置引入-->
+    <import resource="classpath*:context/spring-mybaties.xml"/>
+    <import resource="classpath*:context/spring-redis.xml"/>
+    <!--注解支持-->
+    <context:component-scan base-package="com.nnk.upstream">
+        <!--<context:exclude-filter type="annotation" expression=""-->
+    </context:component-scan>
+
+    <!--资源映射-->
+    <mvc:annotation-driven />
+    <mvc:resources mapping="/assets/**" location="/assets/" />
+    <!-- 异步线程池 -->
+    <bean id="threadPool" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="${threadPoolrecharge.corePoolSize}" />
+        <!-- 最大线程数 -->
+        <property name="maxPoolSize" value="${threadPoolrecharge.maxPoolSize}" />
+        <!-- 队列最大长度 >=mainExecutor.maxSize -->
+        <property name="queueCapacity" value="${threadPoolrecharge.queueCapacity}" />
+        <!-- 线程池维护线程所允许的空闲时间 -->
+        <property name="keepAliveSeconds" value="${threadPoolrecharge.keepAliveSeconds}" />
+
+        <!-- 线程池对拒绝任务(无线程可用)的处理策略 -->
+        <property name="rejectedExecutionHandler">
+            <bean class="${threadPoolrecharge.rejectedExecutionHandler}" />
+        </property>
+    </bean>
+    <!-- 异步线程池 -->
+    <bean id="threadPoolquery" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <!-- 核心线程数  -->
+        <property name="corePoolSize" value="${threadPoolquery.corePoolSize}" />
+        <!-- 最大线程数 -->
+        <property name="maxPoolSize" value="${threadPoolquery.maxPoolSize}" />
+        <!-- 队列最大长度 >=mainExecutor.maxSize -->
+        <property name="queueCapacity" value="${threadPoolquery.queueCapacity}" />
+        <!-- 线程池维护线程所允许的空闲时间 -->
+        <property name="keepAliveSeconds" value="${threadPoolquery.keepAliveSeconds}" />
+        <!-- 线程池对拒绝任务(无线程可用)的处理策略 -->
+        <property name="rejectedExecutionHandler">
+            <bean class="${threadPoolquery.rejectedExecutionHandler}" />
+        </property>
+    </bean>
+    <bean id="messageHandler" class="com.nnk.upstream.handler.MessageHandler" scope="prototype">
+    </bean>
+    <!--充值处理类-->
+    <bean id="SlowInt" class="com.nnk.upstream.handler.SlowIntHandler" scope="prototype">
+        <property name="taskExecutorQuery" ref="threadPoolquery"/>
+        <property name="taskExecutorRecharge" ref="threadPool"/>
+    </bean>
+    <!--查询余额-->
+    <bean id="GetAccount" class="com.nnk.upstream.handler.BalanceHandler"/>
+
+    <bean id="UnSlowInt" class="com.nnk.upstream.handler.UnSlowIntHanlder"/>
+
+    <bean id="UpdateContext" class="com.nnk.upstream.handler.ConfigUpdateHandler"/>
+
+    <bean class="com.nnk.upstream.util.SpringContextUtils"/>
+    <!--配置上-->
+    <bean id="contextManager" class="com.nnk.upstream.core.ConfigContextManager"/>
+
+    <!--配置文件加载器，引入配置文件-->
+    <bean id="properConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <!--测试目录下-->
+            <!--<list>-->
+                <!--<value>classpath:jdbc.properties</value>-->
+                <!--<value>classpath:redis.properties</value>-->
+            <!--</list>-->
+            <!--生产 环境配置-->
+            <list>
+                <value>file:config/jdbc.properties</value>
+                <value>file:config/redis.properties</value>
+                <value>file:config/ThreadPools.properties</value>
+            </list>
+        </property>
+        <property name="propertiesPersister">
+            <bean class="com.nnk.upstream.util.MyPropertiesPersist" />
+        </property>
+        <property name ="ignoreResourceNotFound" value="true"/>
+    </bean>
+    <!--<bean id="propertiesConfigure" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
+        <!--<property name="locations">-->
+            <!--<value>classpath:properties/jdbc.properties</value>-->
+        <!--</property>-->
+    <!--</bean>-->
+    <!--httpclient 工具-->
+    <bean id="httpclientUtils" class="com.nnk.utils.http.utils.HttpClientUtils">
+       <property name="httpWebRequester" ref="httpWebRequest"/>
+
+    </bean>
+    <bean id="httpWebRequest" class="com.nnk.utils.http.core.HttpRequest">
+        <property name="charset" value="utf-8"/>
+        <property name="socketTimeOut" value="60000"/>
+        <property name="connecttimeout" value="20000"/>
+    </bean>
+    <!--app常用静态配置-->
+    <bean id="ApplicationParameters" class="com.nnk.interfacetemplate.entity.ApplicationParameters">
+        <!--充值成功结果集合 对方状态码-->
+        <property name="rechargeSuccessSet">
+            <set>
+                <value>SUCCESS</value>
+                <value>UNDERWAY</value>
+            </set>
+        </property>
+
+        <property name="rechargeFailSet">
+            <set>
+                <!--*代表任意状态码都是失败-->
+                <value>FAIL</value>
+            </set>
+        </property>
+        <!--此集合为查询响应状态码w-->
+        <property name="responseSuccessSet">
+            <set>
+                <value>0000</value>
+                <!--<value>9999</value>-->
+            </set>
+        </property>
+        <!--查询订单状态码成功集合-->
+        <!--
+            0 –正在处理
+            1- 充值成功
+            2- 充值失败
+            3- 订单不存在
+           -->
+        <property name="querySucceeSet">
+            <set>
+                <value>SUCCESS</value>
+
+            </set>
+        </property>
+        <!--查询订单状态码失败集合-->
+        <property name="queryFailSet">
+            <set>
+
+                <value>FAIL</value>
+            </set>
+        </property>
+        <!--查询订单状态不确定集合-->
+        <property name="queryEnsureSet">
+            <set>
+                <value>UNDERWAY</value>
+                <value>ORDERNOTEXIST</value>
+            </set>
+        </property>
+        <!--余额状态成功码集合-->
+        <property name="balanceSucceessSet">
+            <set>
+                <value>0000</value>
+            </set>
+        </property>
+        <!--余额查询失败状态码集合-->
+        <property name="balanceFailSet">
+            <set>
+                <value>*</value>
+            </set>
+        </property>
+
+        <property name="descMap">
+            <map>
+                <entry key="0001" value="签名错误"/>
+                <entry key="0002" value="请求参数错误"/>
+                <entry key="0004" value="请求ip受限"/>
+                <entry key="0005" value="订单号重复"/>
+                <entry key="0006"  value="年年卡余额不足"/>
+                <entry key="0007"  value="运营商升级，不能充值"/>
+                <entry key="0008"  value="号吗问题，暂不提供此号码充值"/>
+                <entry key="9999"  value="系统异常"/>
+            </map>
+        </property>
+        <!--0成功-->
+        <property name="callbackSuccessSet">
+            <set>
+                <value>SUCCESS</value>
+            </set>
+        </property>
+        <!--1   失败-->
+        <property name="callbackFailSet">
+            <set>
+                <value>FAIL</value>
+            </set>
+        </property>
+        <property name="unRechargeSuccessSet">
+            <set>
+                <value>UNSLOWINT_SUCCESS</value>
+            </set>
+        </property>
+        <property name="unREchargeFailSet">
+            <set>
+                <value>UNSLOWINT_FAIL</value>
+            </set>
+        </property>
+    </bean>
+</beans>
