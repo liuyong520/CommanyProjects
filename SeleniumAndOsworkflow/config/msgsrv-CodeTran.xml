@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='GBK'?>
+<server-conf>
+	<server-name>test</server-name>
+	<app-name>TestApp</app-name>
+	<user>TestUser</user>
+	<pwd>TestPwd</pwd>
+	<host>10.1.100.250</host>
+	<port>6004</port>
+	<link-time>120000</link-time>
+	<selector-timeout>1000</selector-timeout>
+	<pulse-time>300000</pulse-time>
+
+</server-conf>

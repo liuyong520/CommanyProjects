@@ -1,0 +1,14 @@
+<workflows>
+	<!--<workflow name="fileDown" type="resource" location="wf_fileDown.xml" />-->
+    <!--<workflow name="SlowInt" type="resource" location="wf_login.xml"/>-->
+    <!--<workflow name="mytest1" type="resource" location="wf_mytest1.xml"/>-->
+    <!--<workflow name="myworkflow" type="resource" location="scheduler.xml"/>-->
+    <!--<workflow name="myworkflow1" type="resource" location="wf_ccbtest.xml"/>-->
+    <!--<workflow name="wf_2000000078" type="resource" location="wf_2000000078.xml"/>-->
+    <!--<workflow name="wf_2000000134" type="resource" location="wf_2000000134.xml"/>-->
+    <!--<workflow name="wf_2000000098" type="resource" location="wf_2000000098.xml"/>-->
+    <workflow name="wf_2000000122" type="resource" location="wf_2000000122.xml"/>
+    <workflow name="wf_2-78" type="resource" location="wf_2-78.xml"/>
+    <workflow name="wf_2-90" type="resource" location="wf_2-90.xml"/>
+    <workflow name="wf_2-118" type="resource" location="wf_2-118.xml"/>
+</workflows>

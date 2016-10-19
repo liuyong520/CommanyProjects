@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" useUTFGuessing="false" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="GBK">
+    <file url="file://$PROJECT_DIR$/lib" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/lib1" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/nnk/template/demo/FirstDemo.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/nnk/template/demo/NNKRecharge.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/nnk/template/demo/OpenInternet.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/nnk/template/demo/SecondAction.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/nnk/template/demo/UnicomLogin.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/nnk/template/osworkflow/OsWorkflow.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/nnk/template/osworkflow/TestFunction.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/nnk/template/util/Base64Util.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/nnk/template/util/DateUtils.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/nnk/template/util/JsonUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/nnk/template/util/ReflectUtils.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/nnk/template/win/User32Ext.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/nnk/template/win/Win32MessageConstants.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/nnk/template/win/WindowsOperators.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/osworkflow.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/workflows.xml" charset="GBK" />
+    <file url="PROJECT" charset="GBK" />
+  </component>
+</project>
+

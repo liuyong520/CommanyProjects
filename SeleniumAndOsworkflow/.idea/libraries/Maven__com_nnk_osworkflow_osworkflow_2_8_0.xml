@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Maven: com.nnk.osworkflow:osworkflow:2.8.0">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/nnk/osworkflow/osworkflow/2.8.0/osworkflow-2.8.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/nnk/osworkflow/osworkflow/2.8.0/osworkflow-2.8.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/nnk/osworkflow/osworkflow/2.8.0/osworkflow-2.8.0-sources.jar!/" />
+      <root url="file://$USER_HOME$/AppData/Local/Temp/intellijad" />
+    </SOURCES>
+  </library>
+</component>

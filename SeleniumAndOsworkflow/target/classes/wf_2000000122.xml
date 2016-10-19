@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE workflow PUBLIC
+        "-//OpenSymphony Group//DTD OSWorkflow 2.7//EN"
+        "http://www.opensymphony.com/osworkflow/workflow_2_7.dtd">
+<workflow>
+    <registers>
+        <register type="class" variable-name="log">
+            <arg name="class.name">com.opensymphony.workflow.util.LogRegister</arg>
+            <arg name="addInstanceId">true</arg>
+            <arg name="Category">workflow</arg>
+        </register>
+    </registers>
+    <initial-actions>
+        <action id="1" name="Open internet and init config">
+            <pre-functions>
+                <function type="beanshell">
+                    <arg name="script">
+                        propertySet.setString("userName","65548039");
+                        propertySet.setString("userPwd","nnk88888007");
+                        propertySet.setString("MsgSrvName","SeleniumApp");
+                        java.lang.String date = com.nnk.template.util.DateUtils.getBeforeDay(2,"yyyy-MM-dd");
+                        propertySet.setString("start_time",date);
+                        java.lang.String date1 = com.nnk.template.util.DateUtils.getNowTime("yyyy-MM-dd");
+                        propertySet.setString("end_time",date1);
+                        propertySet.setString("fireFox.path","C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
+                        <!--propertySet.setString("cookiesFileName","cookies.txt");-->
+                    </arg>
+                </function>
+            </pre-functions>
+            <results>
+                <unconditional-result old-status="Finished"
+                                      status="Queued" step="1001" />
+            </results>
+        </action>
+    </initial-actions>
+    <steps>
+        <step id="1001" name="start">
+            <actions>
+                <action id="1001" name="start">
+                    <results>
+                        <unconditional-result old-status="Finished" step="2" status="Queue"></unconditional-result>
+                    </results>
+                </action>
+            </actions>
+        </step>
+        <step id="2" name="永乐">
+            <actions>
+                <action id="4001" name="close" auto="true">
+                    <pre-functions>
+                        <function type="class">
+                            <arg name="class.name">com.nnk.template.function.SeleniumScriptTranslateActionsExtention</arg>
+                            <arg name="scriptFileName">D:\ideaWorkSpace\SeleniumAndOsworkflow\src\main\resources\1.html</arg>
+                            <arg name="imageType">.png</arg>
+                            <arg name="imageMerid">8800000007</arg>
+                            <arg name="imageRemark">code</arg>
+                            <arg name="description">永乐下载对账单的脚本</arg>
+                        </function>
+                    </pre-functions>
+                    <results>
+                        <result old-status="Finished" status="Queued" step="5">
+                            <conditions type="AND">
+                                <condition type="class">
+                                    <arg name="class.name">com.nnk.template.condition.FindwindowsShowBytitle</arg>
+                                    <arg name="browserClassName">MozillaWindowClass</arg>
+                                    <arg name="windowsClassName">MozillaDialogClass</arg>
+                                    <arg name="windowsTiltle">正在打开</arg>
+                                </condition>
+                                <condition type="beanshell">
+                                    <arg name="script">
+                                        <![CDATA["false".equals(propertySet.getString("condition_result"))]]>
+                                    </arg>
+                                </condition>
+                            </conditions>
+                        </result>
+                        <unconditional-result old-status="Finished" status="Queued" step="9"></unconditional-result>
+                    </results>
+                </action>
+            </actions>
+        </step>
+        <step id="5" name="下载文件">
+            <actions>
+                <action id="5001" name="上传文件" auto="true">
+                    <pre-functions>
+                        <function type="class">
+                            <arg name="class.name">com.nnk.template.function.MockWindowsSelniumkey</arg>
+                            <arg name="browserClassName">MozillaWindowClass</arg>
+                            <arg name="windowsClassName">MozillaDialogClass</arg>
+                            <arg name="windowsTiltle">充值明细</arg>
+                            <arg name="waitTime">10000</arg>
+                            <arg name="fileRegex">正在打开 (.*)</arg>
+                            <arg name="keyCombination">[18,83]|[18,65]|[13]</arg>
+                        </function>
+                        <function type="beanshell">
+                            <arg name="script">
+                                java.lang.String md5sum = com.nnk.utils.encry.MD5Util.getMD5String("dsfdsfeafdsfd");
+                                propertySet.setString("md5sum",md5sum);
+                            </arg>
+                        </function>
+                        <function type="class">
+                            <arg name="class.name">com.nnk.template.function.FileRename</arg>
+                            <arg name="remotePath">C:\\Users\\xxydl\\Downloads</arg>
+                            <arg name="localPath">C:\\Users\\xxydl\\Downloads</arg>
+                            <arg name="rename">2-112_${start_time}.xls</arg>
+                        </function>
+                    </pre-functions>
+                    <results>
+                        <unconditional-result old-status="Finished" status="queued" step="6"></unconditional-result>
+                    </results>
+                </action>
+            </actions>
+        </step>
+        <step id="6" name="upload file">
+            <actions>
+                <action id="301" name="upload" auto="true">
+                    <pre-functions>
+                        <function type="class">
+                            <arg name="class.name">
+                                com.nnk.template.function.FileftpUpoad
+                            </arg>
+                            <arg name="host">10.1.100.250</arg>
+                            <arg name="port">8021</arg>
+                            <arg name="userName">liuy</arg>
+                            <arg name="userPwd">sslp5470</arg>
+                            <arg name="connectTimeout">20000</arg>
+                            <arg name="remotePath">./test</arg>
+                            <arg name="localPath">C:\\Users\\xxydl\\Downloads</arg>
+                        </function>
+                    </pre-functions>
+                    <results>
+                        <unconditional-result old-status="Finished" status="Queued" step="7"></unconditional-result>
+                    </results>
+                </action>
+            </actions>
+        </step>
+        <step id="9" name="response">
+            <actions>
+                <action id="9001" name="response" auto="true">
+                    <pre-functions>
+                        <function type="class">
+                            <arg name="class.name">com.nnk.template.function.MsgsrvResponseFunction</arg>
+                            <arg name="status">fail</arg>
+                            <arg name="desc">无交易对账单</arg>
+                        </function>
+                    </pre-functions>
+                    <results>
+                        <unconditional-result old-status="Finished" status="Queued" step="7"></unconditional-result>
+                    </results>
+                </action>
+            </actions>
+        </step>
+        <step id="7" name="quit">
+            <actions>
+                <action id="7001" name="quitInternet" auto="true">
+                    <pre-functions>
+                        <function type="class">
+                            <arg name="class.name">
+                                com.nnk.template.function.QuitInternet
+                            </arg>
+                        </function>
+                    </pre-functions>
+                    <results>
+                        <unconditional-result old-status="Finished" status="Queued" step="8"></unconditional-result>
+                    </results>
+                </action>
+            </actions>
+        </step>
+        <step id="8" name="finished"/>
+    </steps>
+
+</workflow>

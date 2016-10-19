@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://111.17.213.62:18084/" />
+<title>2-90</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">2-90</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/merchant/login.jsp</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=j_usernames</td>
+	<td>3701001008</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=j_password</td>
+	<td>5681403</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=交易流水</td>
+	<td></td>
+</tr>
+<tr>
+    <td optName="dateformart">dateformart</td>
+    <td optElement="">${startTime}</td>
+    <td optvalue="startTime">#{transDate}</td>
+    <td optType="dateformart">yyyy-MM-dd</td>
+    <td>
+        <ext optName="jsType">jsType</ext>
+        <ext optElement="">id=search_requestTime_start</ext>
+        <ext optvalue="formart">${transDate}</ext>
+        <ext optvalue="formart">yyyy-MM-dd</ext>
+    </td>
+</tr>
+<tr>
+    <td optName="dateformart">dateformart</td>
+    <td optElement="">${endTime}</td>
+    <td optvalue="startTime">#{transEnd}</td>
+    <td optType="dateformart">yyyy-MM-dd</td>
+    <td>
+        <ext optName="jsType">jsType</ext>
+        <ext optElement="">id=search_requestTime_end</ext>
+        <ext optvalue="formart">${transEnd}</ext>
+        <ext optvalue="formart">yyyy-MM-dd</ext>
+    </td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=span.l-btn-text</td>
+	<td>60000</td>
+</tr>
+<tr>
+    <td>waitByTime</td>
+    <td></td>
+    <td>30000</td>
+</tr>
+
+<tr>
+    <td>getText</td>
+    <td>xpath=.//*[@id='recordCount']</td>
+    <td>#{RecordCount}</td>
+</tr>
+<tr>
+    <td type="condition">IFTestStart</td>
+    <td>Equal</td>
+    <td>
+        <td>Equal</td>
+        <td>${RecordCount}</td>
+        <td>0</td>
+    </td>
+    <td>
+        <td>propertySet</td>
+        <td>#{result}</td>
+        <td>fail</td>
+    </td>
+    <td>
+        <td>clickAndWait</td>
+        <td>xpath=//div[@id='mainbody']/div/div[2]/div/div[2]/div[2]/div/div/div/table/tbody/tr/td/a/span/span</td>
+    </td>
+    <td>
+        <td>IFTestEnd</td>
+    </td>
+</tr>
+</tbody></table>
+</body>
+</html>

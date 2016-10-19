@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://manager.sdlhkj.cn:9099/" />
+<title>2-91</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">2-91</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/index.jsp</td>
+	<td></td>
+</tr>
+
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>HR0041</td>
+</tr>
+<tr>
+    <td>type</td>
+    <td>id=password</td>
+    <td>486wl</td>
+</tr>
+<tr>
+    <td>imglocation</td>
+    <td>xpath=.//*[@id='table212']/tbody/tr[3]/td[2]/img</td>
+    <td>#{yzm}</td>
+    <td></td>
+    <td>
+        <ext>type</ext>
+        <ext>id=yzm</ext>
+        <ext>${yzm}</ext>
+        <ext></ext>
+    </td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=Submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>name=leftFrame</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=订单导出</td>
+	<td></td>
+</tr>
+<!--<tr>-->
+	<!--<td>selectWindow</td>-->
+	<!--<td>name=__calendarIframe</td>-->
+	<!--<td></td>-->
+<!--</tr>-->
+<tr>
+    <td>selectWindowsMain</td>
+    <td>name=main</td>
+    <td></td>
+</tr>
+<tr>
+    <td>selectFrame</td>
+    <td>name=main</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td optName="dateformart">dateformart</td>
+    <td optElement="">${startTime}</td>
+    <td optvalue="startTime">#{transDate}</td>
+    <td optType="dateformart">yyyy-MM-dd</td>
+    <td>
+        <ext optName="jsType">jsType</ext>
+        <ext optElement="">id=startTime</ext>
+        <ext optvalue="formart">${transDate}</ext>
+        <ext optvalue="formart">yyyy-MM-dd</ext>
+    </td>
+</tr>
+<tr>
+    <td optName="dateformart">dateformart</td>
+    <td optElement="">${endTime}</td>
+    <td optvalue="startTime">#{transEnd}</td>
+    <td optType="dateformart">yyyy-MM-dd</td>
+    <td>
+        <ext optName="jsType">jsType</ext>
+        <ext optElement="">id=endTime</ext>
+        <ext optvalue="formart">${transEnd}</ext>
+        <ext optvalue="formart">yyyy-MM-dd</ext>
+    </td>
+</tr>
+
+<tr>
+	<td>clickAndWait</td>
+	<td>id=submit</td>
+	<td></td>
+</tr>
+
+
+</tbody></table>
+</body>
+</html>

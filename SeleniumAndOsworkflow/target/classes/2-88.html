@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://211.139.145.140:9080/eucp/common/" />
+<title>2-88</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">2-88</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/login.do</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=userName</td>
+	<td>${userName}</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>${userPwd}</td>
+</tr>
+<tr>
+	<td>imglocation</td>
+	<td>id=verifyImg</td>
+	<td></td>
+	<td></td>
+    <td>
+        <ext>type</ext>
+        <ext>id=rand</ext>
+        <ext></ext>
+    </td>
+</tr>
+<tr>
+
+    <td id="OptName">smsClickBefore</td>
+    <td id="phone">13682773233</td>
+    <td id="regex">你好，验证码是([//d+6])，*谢谢。</td>
+</tr>
+<tr>
+    <td>click</td>
+    <td>id=getMessageRand</td>
+    <td></td>
+</tr>
+<tr>
+	<td>assertAlert</td>
+	<td>id=getMessageRand</td>
+	<td></td>
+</tr>
+<tr>
+	<td>smsinput</td>
+	<td>id=messageRand</td>
+	<!--手机号码-->
+    <td>13682773233</td>
+    <!--超时时间-->
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.loginOK</td>
+	<td></td>
+</tr>
+
+<tr>
+	<td>click</td>
+	<td>css=button[type=&quot;button&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>name=topFrame</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=查询中心</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>name=leftFrame</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=交易查询</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>name=mainFrame</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=bDate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<!--<tr>-->
+	<!--<td>click</td>-->
+	<!--<td>css=td.WdayOn</td>-->
+	<!--<td></td>-->
+<!--</tr>-->
+<tr>
+	<td>click</td>
+	<td>id=dpOkInput</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>name=mainFrame</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=eDate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=td.WdayOn</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>name=mainFrame</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=btnQuery</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=btnExprot</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

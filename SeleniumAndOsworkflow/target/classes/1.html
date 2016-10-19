@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="selenium.base" href="http://www.yolly.cn/"/>
+    <title>1</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+    <thead>
+    <tr>
+        <td rowspan="1" colspan="3">1</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>open</td>
+        <td>/</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>type</td>
+        <td>id=loginName</td>
+        <td>${userName}</td>
+    </tr>
+    <tr>
+        <td>type</td>
+        <td>id=password</td>
+        <td>${userPwd}</td>
+    </tr>
+    <tr>
+        <td>imglocation</td>
+        <td>id=verifyCodeImg</td>
+        <td>#{imageCode}</td>
+        <td>
+            <ext>type</ext>
+            <ext>id=verifyCode</ext>
+            <ext>${imageCode}</ext>
+            <ext>${imageCode}</ext>
+        </td>
+    </tr>
+    <tr>
+        <td>clickAndWait</td>
+        <td>id=dologin</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>click</td>
+        <td>id=sysnotice</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>click</td>
+        <td>link=订单查询</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>click</td>
+        <td>css=div.hideshowmenus</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>click</td>
+        <td>css=#secondmenus &gt; li.on</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>selectFrame</td>
+        <td>name=subframe</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>actionClick</td>
+        <td>xpath=.//*[@id='selectTime']/span[2]</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>click</td>
+        <td>link=最近7天</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td optName="dateformart">dateformart</td>
+        <td optElement="">${startTime}</td>
+        <td optvalue="startTime">#{transDate}</td>
+        <td optType="dateformart">yyyy-MM-dd</td>
+        <td>
+            <ext optName="jsType">jsType</ext>
+            <ext optElement="">id=start_time</ext>
+            <ext optvalue="formart">${transDate}</ext>
+            <ext optvalue="formart">yyyy-MM-dd</ext>
+        </td>
+    </tr>
+    <tr>
+        <td optName="dateformart">dateformart</td>
+        <td optElement="">${endTime}</td>
+        <td optvalue="startTime">#{transEnd}</td>
+        <td optType="dateformart">yyyy-MM-dd</td>
+        <td>
+            <!--注意ext 必须有四个作为一组-->
+            <ext optName="jsType">jsType</ext>
+            <ext optElement="">id=end_time</ext>
+            <ext optvalue="formart">${transEnd}</ext>
+            <ext optvalue="formart">yyyy-MM-dd</ext>
+        </td>
+    </tr>
+    <tr>
+        <td>click</td>
+        <td>css=span.ui-button-text</td>
+    </tr>
+    <tr>
+        <td>clickAndWait</td>
+        <td>id=btnGetCount</td>
+    </tr>
+    <tr>
+        <td>getText</td>
+        <td>xpath=.//*[@id='count_num']</td>
+        <td>#{RecordCount}</td>
+    </tr>
+    <tr>
+        <!--条件里面不能有<td>空白标签-->
+        <td type="condition">IFTestStart</td>
+        <td>Equal</td>
+        <td>
+            <td>Equal</td>
+            <td>${RecordCount}</td>
+            <td>0</td>
+        </td>
+        <td>
+            <td>propertySet</td>
+            <td>#{result}</td>
+            <td>fail</td>
+        </td>
+        <td>
+            <td>clickAndWait</td>
+            <td>xpath=.//*[@id='exprecharge']/i</td>
+        </td>
+        <td>
+            <td>IFTestEnd</td>
+        </td>
+    </tr>
+</tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="SeleniumAndOsworkflow:war exploded">
+    <output-path>$PROJECT_DIR$/target/SeleniumAndOsworkflow</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="SeleniumAndOsworkflow/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="SeleniumAndOsworkflow" />
+        </element>
+        <element id="directory" name="lib" />
+      </element>
+    </root>
+  </artifact>
+</component>
